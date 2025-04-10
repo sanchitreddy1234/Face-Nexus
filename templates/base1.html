@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Attendance System</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/admin_base">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/mark_attendance">Mark Attendance</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/analysis">Analysis</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Flash Messages -->
+    <div class="container mt-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <h1 class="text-center">Welcome to the Attendance Management System</h1>
+        <p class="text-center">Efficiently manage attendance using facial recognition.</p>
+        <div class="text-center mt-4">
+            <a href="/register" class="btn btn-primary">Register a New student</a>
+            <a href="/registerfaculty" class="btn btn-secondary">Register a New faculty</a>
+            <a href="/train" class="btn btn-warning">Train the Model</a>
+            <a href="/mark_attendance" class="btn btn-success">Mark Attendance</a>
+            <a href="/analysis" class="btn btn-info">View Attendance Analysis</a>
+        </div>
+    </div>
+</body>
+</html>

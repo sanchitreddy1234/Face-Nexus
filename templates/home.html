@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="text-center">Welcome to the Attendance Management System</h1>
+<p class="text-center">Efficiently manage attendance using facial recognition.</p>
+<div class="text-center mt-4">
+    <a href="/register" class="btn btn-primary">Register a New User</a>
+    <a href="/train" class="btn btn-warning">Train the Model</a>
+
+    <a href="/mark_attendance" class="btn btn-success">Mark Attendance</a>
+    <a href="/analysis" class="btn btn-info">View Attendance Analysis</a>
+</div>
+{% endblock %}

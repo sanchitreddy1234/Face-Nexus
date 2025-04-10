@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance Analysis</title>
+  <!-- Include Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container-wrapper {
+      width: 100%;
+      max-width: 1200px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-wrapper text-center">
+    <h2 class="text-center mb-4">Attendance Analysis</h2>
+    <p class="text-center mb-4">Analyzing attendance data for <strong>{{ num_days }}</strong> day(s).</p>
+  
+    <div class="container">
+      {% for plot in plots %}
+      <div class="mb-5 text-center">
+        <h4>Attendance Summary for {{ plot.date_column }}</h4>
+        <img src="data:image/png;base64,{{ plot.plot_url }}" alt="Attendance Summary for {{ plot.date_column }}" class="img-fluid" style="max-height: 400px;">
+      </div>
+      {% endfor %}
+      
+      <!-- Display Attendance Summary Table -->
+      <h4 class="text-center mt-5">Total Attendance Summary</h4>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Student Name</th>
+              <th>Total Present</th>
+              <th>Total Absent</th>
+              <th>Attendance Percentage (%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for student, row in attendance_summary.iterrows() %}
+            <tr>
+              <td>{{ student }}</td>
+              <td>{{ row['Total Present'] }}</td>
+              <td>{{ row['Total Absent'] }}</td>
+              <td>{{ row['Attendance Percentage'] | round(2) }}%</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+  
+  </div>
+
+  <!-- Include Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

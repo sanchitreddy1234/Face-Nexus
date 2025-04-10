@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="text-center mb-4">Attendance Analysis</h2>
+<p class="text-center mb-4">Analyzing attendance data for <strong>{{ num_days }}</strong> day(s).</p>
+
+<div class="container">
+    {% for plot in plots %}
+    <div class="mb-5 text-center">
+        <h4>Attendance Summary for {{ plot.date_column }}</h4>
+        <img src="data:image/png;base64,{{ plot.plot_url }}" alt="Attendance Summary for {{ plot.date_column }}" class="img-fluid" style="max-height: 400px;">
+    </div>
+    {% endfor %}
+    
+    <!-- Display Attendance Summary Table -->
+    <h4 class="text-center mt-5">Total Attendance Summary</h4>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Total Present</th>
+                    <th>Total Absent</th>
+                    <th>Attendance Percentage (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student, row in attendance_summary.iterrows() %}
+                <tr>
+                    <td>{{ student }}</td>
+                    <td>{{ row['Total Present'] }}</td>
+                    <td>{{ row['Total Absent'] }}</td>
+                    <td>{{ row['Attendance Percentage'] | round(2) }}%</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="text-center mt-4">
+    <a href="/" class="btn btn-primary btn-lg">Go Back to Home</a>
+</div>
+{% endblock %}

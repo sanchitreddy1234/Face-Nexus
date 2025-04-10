@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Recognition Prediction</title>
+</head>
+<body>
+    <h1>Predict the Face</h1>
+    <form action="/predict" method="POST">
+        <input type="text" name="img_path" placeholder="Enter the image path" required>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if class_name %}
+        <h2>Predicted Class: {{ class_name }}</h2>
+    {% endif %}
+</body>
+</html>

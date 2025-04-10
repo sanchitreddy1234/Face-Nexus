@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="text-center">Train the Model</h2>
+<p class="text-center">Click the button below to start training the model using the registered users' data.</p>
+<form action="/train" method="POST" class="text-center mt-4">
+    <button type="submit" class="btn btn-primary">Train Model</button>
+</form>
+{% endblock %}

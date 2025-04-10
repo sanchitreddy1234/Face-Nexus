@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function validateLogin() {
+      // Hardcoded Admin Details
+      const adminEmail = "admin@gmail.com";
+      const adminPassword = "admin";
+
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      if (email === adminEmail && password === adminPassword) {
+        alert("Login successful! Welcome Admin.");
+        // Redirect to the dashboard or another page
+        window.location.href = "/admin_base";
+      } else {
+        alert("Invalid credentials. Please try again.");
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+
+  <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
+    <h2 class="text-3xl font-bold text-center mb-6">Admin Login</h2>
+    
+    <!-- Form starts here -->
+    <form onsubmit="event.preventDefault(); validateLogin();">
+      <div class="mb-4">
+        <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+        <input type="email" id="email" name="email" class="w-full mt-2 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+      </div>
+
+      <div class="mb-6">
+        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+        <input type="password" id="password" name="password" class="w-full mt-2 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+      </div>
+
+      <button type="submit" class="w-full bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition-colors">Login</button>
+    </form>
+
+    <div class="text-center mt-4">
+      <a href="#" class="text-sm text-blue-500 hover:underline">Forgot Password?</a>
+    </div>
+  </div>
+
+</body>
+</html>

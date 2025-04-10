@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="text-center">Register New User</h2>
+<p class="text-center">Capture 50 images of the user's face to register them in the system.</p>
+<form action="/register" method="POST" class="mt-4">
+    <div class="mb-3">
+        <label for="username" class="form-label">Enter User Name:</label>
+        <input type="text" name="username" id="username" class="form-control" placeholder="User Name" required>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Enter Password:</label>
+        <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
+<p class="text-muted mt-3">Note: After clicking "Register," ensure the user is in front of the camera.</p>
+{% endblock %}
